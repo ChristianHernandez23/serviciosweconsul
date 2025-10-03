@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cerberus Systems - Software a Medida con Seguridad Inquebrantable</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #1a1a2e;
+            --secondary: #16213e;
+            --accent: #0f4c75;
+            --highlight: #3282b8;
+            --text: #eee;
+            --text-dark: #333;
+            --bg-light: #f8f9fa;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+        }
+
+        /* Navigation */
+        nav {
+            background: var(--primary);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        nav .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--text);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo-icon {
+            font-size: 2rem;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: var(--text);
+            text-decoration: none;
+            transition: color 0.3s;
+            font-weight: 500;
+        }
+
+        nav a:hover {
+            color: var(--highlight);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 50%, var(--accent) 100%);
+            color: var(--text);
+            padding: 150px 2rem 100px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><rect width="100" height="100" fill="none"/><path d="M0 50 L100 50" stroke="rgba(255,255,255,0.03)" stroke-width="1"/><path d="M50 0 L50 100" stroke="rgba(255,255,255,0.03)" stroke-width="1"/></svg>');
+            opacity: 0.5;
+        }
+
+        .hero .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero .subtitle {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--highlight);
+            color: var(--text);
+            padding: 1rem 2.5rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(50, 130, 184, 0.4);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(50, 130, 184, 0.6);
+        }
+
+        /* Process Section */
+        .process {
+            padding: 80px 2rem;
+            background: var(--bg-light);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 3rem;
+        }
+
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .step {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+            text-align: center;
+        }
+
+        .step:hover {
+            transform: translateY(-5px);
+        }
+
+        .step-number {
+            font-size: 3rem;
+            font-weight: bold;
+            color: var(--highlight);
+            margin-bottom: 1rem;
+        }
+
+        .step h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        /* Services Section */
+        .services {
+            padding: 80px 2rem;
+            background: white;
+        }
+
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .service-card {
+            background: var(--bg-light);
+            padding: 2rem;
+            border-radius: 10px;
+            border-left: 4px solid var(--highlight);
+            transition: all 0.3s;
+        }
+
+        .service-card:hover {
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            transform: translateX(5px);
+        }
+
+        .service-card h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .service-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Methodology Section */
+        .methodology {
+            padding: 80px 2rem;
+            background: var(--secondary);
+            color: var(--text);
+        }
+
+        .methodology-phases {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .phase {
+            background: rgba(255,255,255,0.1);
+            padding: 2rem;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+        }
+
+        .phase h3 {
+            color: var(--highlight);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        /* Cases Section */
+        .cases {
+            padding: 80px 2rem;
+            background: var(--bg-light);
+        }
+
+        .case-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .case-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .case-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .case-header {
+            background: linear-gradient(135deg, var(--accent), var(--highlight));
+            color: var(--text);
+            padding: 2rem;
+        }
+
+        .case-body {
+            padding: 2rem;
+        }
+
+        .case-metric {
+            display: inline-block;
+            background: var(--bg-light);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            margin: 0.5rem;
+            font-weight: bold;
+            color: var(--accent);
+        }
+
+        /* Team Section */
+        .team {
+            padding: 80px 2rem;
+            background: white;
+        }
+
+        .team-values {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .value-card {
+            text-align: center;
+            padding: 2rem;
+            border-radius: 10px;
+            background: var(--bg-light);
+        }
+
+        .value-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 80px 2rem;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: var(--text);
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 3rem auto;
+            background: white;
+            padding: 3rem;
+            border-radius: 10px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--highlight);
+        }
+
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 1rem;
+            background: var(--highlight);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .submit-btn:hover {
+            background: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary);
+            color: var(--text);
+            padding: 3rem 2rem 1rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            color: var(--highlight);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links a {
+            color: var(--text);
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.5rem;
+            opacity: 0.8;
+            transition: opacity 0.3s;
+        }
+
+        .footer-links a:hover {
+            opacity: 1;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            opacity: 0.7;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .process-steps,
+            .service-grid,
+            .case-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .success-message {
+            display: none;
+            background: #4caf50;
+            color: white;
+            padding: 1rem;
+            border-radius: 5px;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .success-message.show {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <div class="logo">
+                <span class="logo-icon">🛡️</span>
+                <span>Cerberus Systems</span>
+            </div>
+            <ul>
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#servicios">Servicios</a></li>
+                <li><a href="#casos">Casos de Éxito</a></li>
+                <li><a href="#equipo">Equipo</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="hero">
+        <div class="container">
+            <h1>Software a Medida, Vigilancia Inquebrantable</h1>
+            <p class="subtitle">Tu negocio es único. Tu software también debería serlo. Creamos <strong>sistemas a la medida</strong>, optimizados para tu flujo de trabajo, con <strong>seguridad integrada</strong> desde la primera línea de código.</p>
+            <a href="#contacto" class="cta-button">Comienza tu Proyecto Personalizado</a>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="process">
+        <div class="container">
+            <h2 class="section-title">Nuestro Proceso</h2>
+            <p class="section-subtitle">Un camino claro hacia tu solución personalizada</p>
+            <div class="process-steps">
+                <div class="step">
+                    <div class="step-number">01</div>
+                    <h3>Descubrimiento</h3>
+                    <p>Analizamos tus necesidades específicas, flujos de trabajo actuales y objetivos de negocio para diseñar la solución perfecta.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">02</div>
+                    <h3>Desarrollo</h3>
+                    <p>Construimos tu software utilizando las mejores tecnologías, con iteraciones constantes y seguridad integrada en cada sprint.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">03</div>
+                    <h3>Despliegue</h3>
+                    <p>Lanzamos tu sistema con pruebas exhaustivas, migración de datos y capacitación completa para tu equipo.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">04</div>
+                    <h3>Soporte</h3>
+                    <p>Te acompañamos con mantenimiento continuo, actualizaciones y mejoras para que tu sistema evolucione con tu negocio.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="servicios" class="services">
+        <div class="container">
+            <h2 class="section-title">Desarrollo a Medida</h2>
+            <p class="section-subtitle">Soluciones personalizadas para cada necesidad</p>
+            <div class="service-grid">
+                <div class="service-card">
+                    <div class="service-icon">💻</div>
+                    <h3>Aplicaciones Web</h3>
+                    <p>Sistemas web robustos y escalables construidos con React, Vue.js, Angular y backends en Node.js, Python o .NET.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">📱</div>
+                    <h3>Aplicaciones Móviles</h3>
+                    <p>Apps nativas e híbridas para iOS y Android que ofrecen experiencias excepcionales en cualquier dispositivo.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🔧</div>
+                    <h3>Sistemas Internos</h3>
+                    <p>ERP, CRM y plataformas de gestión diseñadas específicamente para optimizar tus procesos empresariales.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🔗</div>
+                    <h3>Integración de APIs</h3>
+                    <p>Conectamos tus sistemas existentes con nuevas herramientas y servicios para crear un ecosistema digital unificado.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">☁️</div>
+                    <h3>Arquitectura Cloud</h3>
+                    <p>Diseñamos e implementamos soluciones en AWS, Azure y Google Cloud con alta disponibilidad y escalabilidad.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🤖</div>
+                    <h3>Automatización</h3>
+                    <p>Automatizamos procesos repetitivos con bots, scripts y flujos inteligentes que ahorran tiempo y reducen errores.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Methodology Section -->
+    <section class="methodology">
+        <div class="container">
+            <h2 class="section-title" style="color: var(--text);">La Metodología Guardián</h2>
+            <p class="section-subtitle" style="color: rgba(255,255,255,0.8);">Seguridad integrada en cada fase del desarrollo</p>
+            <div class="methodology-phases">
+                <div class="phase">
+                    <h3>🔍 Fase 1: Descubrimiento y Estrategia</h3>
+                    <p><strong>La Visión:</strong> Reuniones de descubrimiento, análisis de requerimientos, definición de arquitectura y planificación de sprints con Agile/Scrum.</p>
+                    <p style="margin-top: 1rem;"><strong>Seguridad:</strong> Modelado de amenazas y análisis de riesgos desde el diseño.</p>
+                </div>
+                <div class="phase">
+                    <h3>⚙️ Fase 2: Desarrollo e Iteración</h3>
+                    <p><strong>La Construcción Vigilada:</strong> Desarrollo iterativo con código limpio, revisiones constantes y testing automatizado (TDD).</p>
+                    <p style="margin-top: 1rem;"><strong>Seguridad:</strong> Análisis estático de código (SAST), escaneo de vulnerabilidades y DevSecOps integrado.</p>
+                </div>
+                <div class="phase">
+                    <h3>🚀 Fase 3: Despliegue y Protección</h3>
+                    <p><strong>El Lanzamiento Seguro:</strong> Pruebas exhaustivas (funcionales, de integración, de carga), despliegue en producción y monitoreo continuo.</p>
+                    <p style="margin-top: 1rem;"><strong>Seguridad:</strong> Pentesting, análisis dinámico (DAST) y protección con WAF y encriptación.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cases Section -->
+    <section id="casos" class="cases">
+        <div class="container">
+            <h2 class="section-title">Proyectos Asegurados</h2>
+            <p class="section-subtitle">Casos de éxito que demuestran nuestra capacidad</p>
+            <div class="case-grid">
+                <div class="case-card">
+                    <div class="case-header">
+                        <h3>Sistema de Gestión Logística</h3>
+                        <p>Industria: Transporte y Logística</p>
+                    </div>
+                    <div class="case-body">
+                        <h4>El Desafío</h4>
+                        <p>El software existente no podía manejar la complejidad de rutas dinámicas ni integrarse con sensores IoT de flotilla.</p>
+                        <h4 style="margin-top: 1rem;">La Solución</h4>
+                        <p>Desarrollamos una plataforma web con React y Python (Django) que integra GPS, sensores IoT y algoritmos de optimización de rutas en tiempo real.</p>
+                        <h4 style="margin-top: 1rem;">Resultados</h4>
+                        <div>
+                            <span class="case-metric">↑ 35% Eficiencia</span>
+                            <span class="case-metric">↓ 28% Costos</span>
+                            <span class="case-metric">↓ 60% Errores</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="case-card">
+                    <div class="case-header">
+                        <h3>Plataforma Financiera FinTech</h3>
+                        <p>Industria: Servicios Financieros</p>
+                    </div>
+                    <div class="case-body">
+                        <h4>El Desafío</h4>
+                        <p>Necesitaban una plataforma segura para procesamiento de pagos con cumplimiento PCI-DSS y alta disponibilidad.</p>
+                        <h4 style="margin-top: 1rem;">La Solución</h4>
+                        <p>Sistema cloud en AWS con microservicios en Node.js, autenticación multifactor y encriptación end-to-end.</p>
+                        <h4 style="margin-top: 1rem;">Resultados</h4>
+                        <div>
+                            <span class="case-metric">99.99% Uptime</span>
+                            <span class="case-metric">↑ 50% Transacciones</span>
+                            <span class="case-metric">0 Brechas</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="case-card">
+                    <div class="case-header">
+                        <h3>App Móvil E-commerce</h3>
+                        <p>Industria: Retail</p>
+                    </div>
+                    <div class="case-body">
+                        <h4>El Desafío</h4>
+                        <p>Experiencia móvil deficiente con alta tasa de abandono de carrito y problemas de sincronización de inventario.</p>
+                        <h4 style="margin-top: 1rem;">La Solución</h4>
+                        <p>App nativa en React Native con backend en .NET Core, integración con sistemas legacy y checkout optimizado.</p>
+                        <h4 style="margin-top: 1rem;">Resultados</h4>
+                        <div>
+                            <span class="case-metric">↑ 120% Ventas</span>
+                            <span class="case-metric">↓ 45% Abandono</span>
+                            <span class="case-metric">4.8★ Rating</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section id="equipo" class="team">
+        <div class="container">
+            <h2 class="section-title">Los Arquitectos Guardianes</h2>
+            <p class="section-subtitle">Expertos en construir y proteger tu futuro digital</p>
+            
+            <div style="max-width: 800px; margin: 2rem auto; text-align: center;">
+                <p style="font-size: 1.1rem; line-height: 1.8;">Como <strong>Cérbero</strong>, el guardián de tres cabezas que vigilaba las puertas del inframundo, en <strong>Cerberus Systems</strong> protegemos la eficiencia y el futuro digital de nuestros clientes. Nuestro equipo de desarrolladores y arquitectos no solo programa, sino que <strong>construye con propósito y protege con vigilancia</strong>.</p>
+            </div>
+
+            <h3 style="text-align: center; margin: 3rem 0 2rem; color: var(--accent); font-size: 1.8rem;">Nuestros Valores</h3>
+            <div class="team-values">
+                <div class="value-card">
+                    <div class="value-icon">🎯</div>
+                    <h3>Calidad del Código</h3>
+                    <p>Escribimos código limpio, mantenible y escalable que resiste la prueba del tiempo.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">🛡️</div>
+                    <h3>Vigilancia (Seguridad)</h3>
+                    <p>La seguridad no es una característica adicional, es el fundamento de todo lo que construimos.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">🔄</div>
+                    <h3>Adaptabilidad</h3>
+                    <p>Cada cliente es único. Adaptamos nuestras soluciones a tus necesidades específicas.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">🚀</div>
+                    <h3>Innovación</h3>
+                    <p>Utilizamos las tecnologías más avanzadas para crear soluciones que marcan la diferencia.</p>
+                </div>
+            </div>
+
+            <div style="margin-top: 3rem; text-align: center; background: var(--bg-light); padding: 2rem; border-radius: 10px;">
+                <h3 style="color: var(--accent); margin-bottom: 1rem;">Nuestras Tecnologías</h3>
+                <p><strong>Frontend:</strong> React, Vue.js, Angular, React Native</p>
+                <p><strong>Backend:</strong> Node.js, Python (Django/Flask), .NET Core, Java</p>
+                <p><strong>Cloud:</strong> AWS, Azure, Google Cloud Platform</p>
+                <p><strong>Databases:</strong> PostgreSQL, MongoDB, MySQL, Redis</p>
+                <p><strong>DevOps:</strong> Docker, Kubernetes, CI/CD, Terraform</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contacto" class="contact">
+        <div class="container">
+            <h2 class="section-title" style="color: var(--text);">Asegura tu Solución</h2>
+            <p class="section-subtitle" style="color: rgba(255,255,255,0.8);">Comencemos a construir el software que tu negocio necesita</p>
+            
+            <div class="contact-form">
+                <div id="successMessage" class="success-message">
+                    ¡Gracias por tu mensaje! Nos pondremos en contacto contigo pronto.
+                </div>
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="nombre">Nombre Completo *</label>
+                        <input type="text" id="nombre" name="nombre" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email *</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="empresa">Empresa</label>
+                        <input type="text" id="empresa" name="empresa">
+                    </div>
+                    <div class="form-group">
+                        <label for="telefono">Teléfono</label>
+                        <input type="tel" id="telefono" name="telefono">
+                    </div>
+                    <div class="form-group">
+                        <label for="proyecto">Descripción del Proyecto *</label>
+                        <textarea id="proyecto" name="proyecto" required placeholder="Cuéntanos sobre tu necesidad: ¿Qué problema necesitas resolver? ¿Qué tipo de software requieres?"></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Agendar Llamada de Descubrimiento Gratuita</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Cerberus Systems</h3>
+                <p>Desarrollamos software a medida con seguridad inquebrantable. Tu guardián digital de confianza.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Navegación</h3>
+                <ul class="footer-links">
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#servicios">Servicios</a></li>
+                    <li><a href="#casos">Casos de Éxito</a></li>
+                    <li><a href="#equipo">Equipo</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Legal</h3>
+                <ul class="footer-links">
+                    <li><a href="#privacidad">Aviso de Privacidad</a></li>
+                    <li><a href="#terminos">Términos y Condiciones</a></li>
+                    <li><a href="#sitemap">Sitemap</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contacto</h3>
+                <p>📧 contacto@cerberussystems.com</p>
+                <p>📞 +52 (55) 1234-5678</p>
+                <p>📍 Ciudad de México, México</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Cerberus Systems. Todos los derechos reservados. | Desarrollo a Medida con Seguridad Inquebrantable</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Contact form handling
+        const contactForm = document.getElementById('contactForm');
+        const successMessage = document.getElementById('successMessage');
+
+        // Simple in-memory storage for contact submissions
+        const contactSubmissions = [];
+
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = {
+                nombre: document.getElementById('nombre').value,
+                email: document.getElementById('email').value,
+                empresa: document.getElementById('empresa').value,
+                telefono: document.getElementById('telefono').value,
+                proyecto: document.getElementById('proyecto').value,
+                fecha: new Date().toISOString()
+            };
+            
+            // Store in memory
+            contactSubmissions.push(formData);
+            
+            // Show success message
+            successMessage.classList.add('show');
+            
+            // Reset form
+            contactForm.reset();
+            
+            // Hide success message after 5 seconds
+            setTimeout(() => {
+                successMessage.classList.remove('show');
+            }, 5000);
+            
+            // Log to console (in a real app, this would send to a server)
+            console.log('Nueva solicitud de contacto:', formData);
+            console.log('Total de solicitudes:', contactSubmissions.length);
+        });
+
+        // Add scroll effect to navbar
+        let lastScroll = 0;
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            const currentScroll = window.pageYOffset;
+            
+            if (currentScroll > 100) {
+                nav.style.background = 'rgba(26, 26, 46, 0.95)';
+                nav.style.backdropFilter = 'blur(10px)';
+            } else {
+                nav.style.background = 'var(--primary)';
+                nav.style.backdropFilter = 'none';
+            }
+            
+            lastScroll = currentScroll;
+        });
+
+        // Animate elements on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all cards and steps
+        document.querySelectorAll('.step, .service-card, .case-card, .value-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
