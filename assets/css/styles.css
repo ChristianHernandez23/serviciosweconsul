@@ -466,3 +466,98 @@ text-align: center;
 .success-message.show {
 display: block;
 }
+/* Estilos para el Contenedor Principal */
+.team-container {
+    display: flex; /* Activa Flexbox para poner las tarjetas en fila */
+    flex-wrap: wrap; /* Permite que las tarjetas salten de línea en pantallas pequeñas */
+    justify-content: center; /* Centra las tarjetas horizontalmente */
+    max-width: 1200px; /* Ancho máximo para el contenedor */
+    margin: 3rem auto; /* Margen superior/inferior y centrado */
+    padding: 0 15px;
+}
+
+/* Estilos para cada Miembro del Equipo */
+.team-member {
+    flex: 1 1 250px; /* Flex-grow, flex-shrink, base-size (para 4 columnas en desktop) */
+    margin: 15px; /* Espacio entre los miembros */
+    text-align: center;
+    max-width: 250px; /* Limita el ancho de cada tarjeta */
+}
+
+/* Estilos para la Foto de Perfil */
+.member-photo {
+    width: 100%; /* Ocupa todo el ancho de la tarjeta */
+    height: auto;
+    display: block;
+    /* Para darle el efecto de las fotos del ejemplo (que parecen recortadas y flotando) */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra ligera para separarla del fondo */
+    transition: transform 0.3s ease;
+}
+
+.member-photo:hover {
+    transform: translateY(-5px); /* Pequeño efecto de elevación al pasar el mouse */
+}
+
+/* Estilos para el Nombre y Designación */
+.member-name {
+    margin-top: 15px;
+    margin-bottom: 5px;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #333; /* Color oscuro para el nombre */
+}
+
+.member-designation {
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 1rem;
+    color: #666; /* Color gris para la designación */
+}
+
+/* Estilos para los Enlaces de Redes Sociales */
+.social-links {
+    margin-top: 10px;
+}
+
+.social-icon {
+    display: inline-block;
+    color: #999; /* Color gris claro por defecto */
+    font-size: 1.2rem;
+    margin: 0 5px;
+    transition: color 0.3s ease;
+}
+
+.social-icon:hover {
+    color: #007bff; /* Color de hover, puedes elegir el color principal de tu marca */
+}
+
+/* Media Query para hacerlo Responsivo (en móviles) */
+@media (max-width: 768px) {
+    .team-member {
+        flex: 1 1 45%; /* En pantallas medianas, 2 miembros por fila */
+        max-width: 45%;
+    }
+}
+
+@media (max-width: 500px) {
+    .team-member {
+        flex: 1 1 100%; /* En móviles, 1 miembro por fila */
+        max-width: 300px; /* Limita el ancho de la tarjeta a un tamaño razonable */
+    }
+}
+.success-message {
+    display: none;
+    background-color: #4CAF50; /* Verde */
+    color: white;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.success-message.show {
+    display: block;
+    opacity: 1;
+}

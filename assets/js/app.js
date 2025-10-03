@@ -12,43 +12,64 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Contact form handling
+
+// Contact form handling (Modificado para enviar al backend)
 const contactForm = document.getElementById('contactForm');
 const successMessage = document.getElementById('successMessage');
+const submitButton = contactForm.querySelector('.submit-btn'); // Obtenemos el botón de envío
 
-// Simple in-memory storage for contact submissions
-const contactSubmissions = [];
-
-contactForm.addEventListener('submit', function(e) {
+contactForm.addEventListener('submit', async function(e) {
     e.preventDefault();
     
-    // Get form data
-    const formData = {
-        nombre: document.getElementById('nombre').value,
-        email: document.getElementById('email').value,
-        empresa: document.getElementById('empresa').value,
-        telefono: document.getElementById('telefono').value,
-        proyecto: document.getElementById('proyecto').value,
-        fecha: new Date().toISOString()
-    };
-    
-    // Store in memory
-    contactSubmissions.push(formData);
-    
-    // Show success message
-    successMessage.classList.add('show');
-    
-    // Reset form
-    contactForm.reset();
-    
-    // Hide success message after 5 seconds
-    setTimeout(() => {
-        successMessage.classList.remove('show');
-    }, 5000);
-    
-    // Log to console (in a real app, this would send to a server)
-    console.log('Nueva solicitud de contacto:', formData);
-    console.log('Total de solicitudes:', contactSubmissions.length);
+    // Obtener los datos del formulario como un objeto JSON
+    const formData = new FormData(contactForm);
+    const jsonData = Object.fromEntries(formData.entries());
+
+    // Desactivar el botón y cambiar texto mientras se envía
+    const originalButtonText = submitButton.textContent;
+    submitButton.textContent = 'Enviando...';
+    submitButton.disabled = true;
+
+    try {
+        // --- PETICIÓN AL BACKEND ---
+        // ¡IMPORTANTE! Reemplaza la URL si tu servidor se ejecuta en otro lugar/puerto
+        const response = await fetch('http://localhost:3000/send-email', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(jsonData)
+        });
+        // --------------------------
+
+        if (response.ok) {
+            // Éxito: Muestra el mensaje de éxito
+            successMessage.classList.add('show');
+            
+            // Reset form
+            contactForm.reset();
+            
+            // Hide success message after 5 seconds
+            setTimeout(() => {
+                successMessage.classList.remove('show');
+            }, 5000);
+
+            console.log('Solicitud enviada al servidor con éxito.');
+        } else {
+            // Error en la respuesta del servidor (ej. error de Nodemailer)
+            alert('¡Ocurrió un error al procesar tu solicitud! Por favor, revisa la consola para más detalles.');
+            console.error('Error del servidor:', await response.text());
+        }
+
+    } catch (error) {
+        // Error de red (ej. el servidor no está corriendo)
+        alert('¡Error de conexión! No se pudo contactar al servidor. Asegúrate de que el backend esté iniciado.');
+        console.error('Error de red al enviar el formulario:', error);
+    } finally {
+        // Restaurar el botón en cualquier caso
+        submitButton.textContent = originalButtonText;
+        submitButton.disabled = false;
+    }
 });
 
 // Add scroll effect to navbar
