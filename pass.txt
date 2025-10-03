@@ -1,0 +1,3 @@
+        user: 'systemscerberus@gmail.com', 
+        // La "Contraseña de Aplicación" generada por Gmail o la contraseña de tu SMTP
+        pass: 'vldm hpov fqou axqs' 

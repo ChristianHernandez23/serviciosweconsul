@@ -12,11 +12,10 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-
-// Contact form handling (Modificado para enviar al backend)
+// Contact form handling (Modificado para PHP)
 const contactForm = document.getElementById('contactForm');
 const successMessage = document.getElementById('successMessage');
-const submitButton = contactForm.querySelector('.submit-btn'); // Obtenemos el botón de envío
+const submitButton = contactForm.querySelector('.submit-btn');
 
 contactForm.addEventListener('submit', async function(e) {
     e.preventDefault();
@@ -31,12 +30,13 @@ contactForm.addEventListener('submit', async function(e) {
     submitButton.disabled = true;
 
     try {
-        // --- PETICIÓN AL BACKEND ---
-        // ¡IMPORTANTE! Reemplaza la URL si tu servidor se ejecuta en otro lugar/puerto
-        const response = await fetch('http://localhost:3000/send-email', {
+        // --- PETICIÓN AL BACKEND PHP ---
+        // ¡CAMBIO CLAVE! Apunta directamente al archivo PHP en el mismo dominio.
+        const response = await fetch('send_email.php', { 
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json'
+                // Sigue enviando JSON, ya que el script PHP lo procesa con file_get_contents("php://input")
+                'Content-Type': 'application/json' 
             },
             body: JSON.stringify(jsonData)
         });
@@ -56,14 +56,15 @@ contactForm.addEventListener('submit', async function(e) {
 
             console.log('Solicitud enviada al servidor con éxito.');
         } else {
-            // Error en la respuesta del servidor (ej. error de Nodemailer)
-            alert('¡Ocurrió un error al procesar tu solicitud! Por favor, revisa la consola para más detalles.');
-            console.error('Error del servidor:', await response.text());
+            // El servidor PHP devolvió un error (400, 500, etc.)
+            const errorData = await response.json();
+            alert(`Error al procesar la solicitud: ${errorData.message}`);
+            console.error('Error del servidor:', errorData);
         }
 
     } catch (error) {
-        // Error de red (ej. el servidor no está corriendo)
-        alert('¡Error de conexión! No se pudo contactar al servidor. Asegúrate de que el backend esté iniciado.');
+        // Error de red (el archivo PHP no se encontró o el servidor está caído)
+        alert('¡Error de conexión! No se pudo contactar al servidor o el archivo no existe.');
         console.error('Error de red al enviar el formulario:', error);
     } finally {
         // Restaurar el botón en cualquier caso
@@ -71,6 +72,7 @@ contactForm.addEventListener('submit', async function(e) {
         submitButton.disabled = false;
     }
 });
+
 
 // Add scroll effect to navbar
 let lastScroll = 0;
