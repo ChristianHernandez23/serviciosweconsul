@@ -5,14 +5,21 @@ box-sizing: border-box;
 }
 
 :root {
---primary: #1a1a2e;
---secondary: #16213e;
---accent: #0f4c75;
---highlight: #3282b8;
---text: #eee;
---text-dark: #333;
---bg-light: #f8f9fa;
+    /* GRISES OSCUROS / NEGROS (Basado en el fondo y gris oscuro del logo) */
+    --primary: #0A0A0A; /* Negro profundo para la navegación y fondos principales */
+    --secondary: #1F252F; /* Gris muy oscuro, casi negro, para contraste */
+    --gray-metal: #4E596C; /* Un gris metálico que se acerca al color principal del logo */
+    
+    /* AZUL CIAN/ELÉCTRICO (Basado en el acento brillante del logo) */
+    --highlight: #00A3FF; /* Un cian brillante/eléctrico (similar al del logo) */
+    --accent: #0077B6; /* Un azul intermedio y saturado */
+    
+    /* Colores de texto y fondo */
+    --text: #E5E5E5; /* Gris muy claro, mejor sobre fondos oscuros */
+    --text-dark: #333; /* Para texto sobre fondos claros */
+    --bg-light: #F4F7FB; /* Fondo claro para secciones que necesitan contraste */
 }
+
 
 body {
 font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -52,6 +59,11 @@ gap: 0.5rem;
 .logo-icon {
 font-size: 2rem;
 }
+.service-icon {
+    font-size: 3rem; /* Define el tamaño del ícono */
+    margin-bottom: 1rem;
+    color: var(--highlight); /* Lo colorea con tu cian brillante */
+}
 
 nav ul {
 display: flex;
@@ -70,39 +82,33 @@ nav a:hover {
 color: var(--highlight);
 }
 
+
 /* Hero Section */
 .hero {
-background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 50%, var(--accent) 100%);
-color: var(--text);
-padding: 150px 2rem 100px;
-text-align: center;
-position: relative;
-overflow: hidden;
+    /* Mantenemos el fondo oscuro */
+    background: var(--primary); /* Negro profundo #0A0A0A */
+    color: var(--text);
+    padding: 150px 2rem 100px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    /* Necesario para que el :after se posicione correctamente */
+    perspective: 1000px; 
 }
 
-.hero::before {
-content: '';
-position: absolute;
-top: 0;
-left: 0;
-right: 0;
-bottom: 0;
-background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><rect width="100" height="100" fill="none"/><path d="M0 50 L100 50" stroke="rgba(255,255,255,0.03)" stroke-width="1"/><path d="M50 0 L50 100" stroke="rgba(255,255,255,0.03)" stroke-width="1"/></svg>');
-opacity: 0.5;
-}
 
-.hero .container {
-max-width: 1000px;
-margin: 0 auto;
-position: relative;
-z-index: 1;
-}
 
+/* Título con un ligero efecto Neon para destacar */
 .hero h1 {
-font-size: 3.5rem;
-margin-bottom: 1.5rem;
-line-height: 1.2;
-text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    font-size: 3.5rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+    /* Sombra de texto cian para el efecto Neon */
+    text-shadow: 0 0 5px var(--highlight), 0 0 10px rgba(0, 163, 255, 0.4); 
+    
+    /* Mantenemos la animación de entrada de contenido */
+    animation: fadeInSlideUp 0.8s ease-out 0.2s forwards; 
+    opacity: 0; 
 }
 
 .hero .subtitle {
@@ -113,6 +119,7 @@ max-width: 800px;
 margin-left: auto;
 margin-right: auto;
 }
+
 
 .cta-button {
 display: inline-block;
@@ -141,6 +148,9 @@ background: var(--bg-light);
 .container {
 max-width: 1200px;
 margin: 0 auto;
+
+
+
 }
 
 .section-title {
@@ -156,7 +166,7 @@ font-size: 1.2rem;
 color: #666;
 margin-bottom: 3rem;
 }
-
+/* Proceso */
 .process-steps {
 display: grid;
 grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -165,16 +175,31 @@ margin-top: 3rem;
 }
 
 .step {
-background: white;
-padding: 2rem;
-border-radius: 10px;
-box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-transition: transform 0.3s;
-text-align: center;
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    /* Sombras inicial más sutil, pero con el color que deseas que 'brille' */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1); 
+    /* ¡Añade box-shadow y background-color a la transición! */
+    transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s;
+    text-align: center;
 }
 
 .step:hover {
-transform: translateY(-5px);
+    /* Mantenemos el efecto de levantarse */
+    transform: translateY(-10px); /* Sugiero reducir un poco para que no sea tan brusco */
+    
+    /* Efecto de Iluminación */
+    /* Aumentamos la sombra y le damos un color vibrante (como tu highlight o primary)
+       para simular el brillo. Usa un color suave como 'rgba(0, 123, 255, 0.4)'
+       o 'rgba(var(--highlight-rgb), 0.4)' si tienes esa variable.
+    */
+    box-shadow: 
+        0 8px 25px rgba(0,0,0,0.2), /* Sombra principal más fuerte */
+        0 0 15px 5px rgba(0, 150, 255, 0.4); /* Sombra de color para el brillo azul/resaltado */
+        
+    /* Opcional: Cambiar ligeramente el fondo a un tono muy claro */
+    background-color: #f8faff; 
 }
 
 .step-number {
@@ -191,40 +216,87 @@ color: var(--primary);
 }
 
 /* Services Section */
+/* Services Section (se mantiene igual) */
 .services {
-padding: 80px 2rem;
-background: white;
+    padding: 80px 2rem;
+    background: white;
+    /* Importante: Oculta el contenido duplicado que sale de la vista */
+    overflow: hidden; 
 }
 
+/* ---------------------------------- */
+/* Estilos clave del Carrusel (Service Grid) */
+/* ---------------------------------- */
 .service-grid {
-display: grid;
-grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-gap: 2rem;
-margin-top: 3rem;
+    margin-top: 3rem;
+    
+    /* Usamos flexbox para alinear horizontalmente */
+    display: flex;
+    /* Evita que las tarjetas se envuelvan */
+    flex-wrap: nowrap; 
+    
+    /* El ancho total debe ser el doble (o más) para acomodar los duplicados */
+    /* Lo manejaremos mejor con transform y la animación */
+    
+    /* Espacio entre las tarjetas */
+    gap: 2rem; 
+    
+    /* Aplica la animación: nombre, duración, tipo de repetición */
+    animation: scroll-infinito 30s linear infinite; /* Ajusta 30s para cambiar la velocidad */
 }
 
+.service-grid:hover {
+    /* Detiene la animación al pasar el ratón */
+    animation-play-state: paused; 
+}
+
+
+/* ---------------------------------- */
+/* Estilos de las Tarjetas (Service Card) */
+/* ---------------------------------- */
 .service-card {
-background: var(--bg-light);
-padding: 2rem;
-border-radius: 10px;
-border-left: 4px solid var(--highlight);
-transition: all 0.3s;
+    /* Ancho fijo: CRUCIAL para que la animación sepa cuánto mover */
+    min-width: 300px; 
+    
+    /* Estilos de la tarjeta (se mantienen igual, elimina scroll-snap si lo tenías) */
+    background: var(--bg-light);
+    padding: 2rem;
+    border-radius: 10px;
+    border-left: 4px solid var(--highlight);
+    
+    /* Combinamos las transiciones */
+    transition: box-shadow 0.3s, transform 0.3s, opacity 0.6s ease;
 }
 
-.service-card:hover {
-box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-transform: translateX(5px);
+/* ---------------------------------- */
+/* Definición de la Animación de Desplazamiento */
+/* ---------------------------------- */
+@keyframes scroll-infinito {
+    /* El cálculo es la clave: (Ancho de la tarjeta + gap) * Cantidad de tarjetas originales */
+    /* En tu caso: (300px + 32px) * 5 tarjetas = 1660px */
+    /* Moveremos el grid completo a la izquierda por esta cantidad */
+    from {
+        transform: translateX(0);
+    }
+    to {
+        /* Desplaza el grid para que el duplicado quede en la posición inicial */
+        transform: translateX(calc(-1 * (300px + 2rem) * 5));
+        /* NOTA: Usar 'calc' es más seguro, pero asegúrate que 2rem se calcula como 32px 
+           Si tienes dudas, usa el valor fijo: transform: translateX(-1660px); */
+    }
 }
+
+
 
 .service-card h3 {
-color: var(--primary);
-margin-bottom: 1rem;
-font-size: 1.5rem;
+    color: var(--primary);
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
 }
 
 .service-icon {
-font-size: 2.5rem;
-margin-bottom: 1rem;
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
 }
 
 /* Methodology Section */
@@ -236,9 +308,10 @@ color: var(--text);
 
 .methodology-phases {
 display: grid;
-grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
 gap: 2rem;
-margin-top: 3rem;
+margin-top: 2rem;
+
 }
 
 .phase {
@@ -246,6 +319,8 @@ background: rgba(255,255,255,0.1);
 padding: 2rem;
 border-radius: 10px;
 backdrop-filter: blur(10px);
+
+
 }
 
 .phase h3 {
@@ -259,6 +334,45 @@ font-size: 1.5rem;
 padding: 80px 2rem;
 background: var(--bg-light);
 }
+
+/* Estilo del Botón */
+.toggle-solution-btn {
+    display: block; /* Para que ocupe todo el ancho */
+    width: 100%;
+    padding: 10px 15px;
+    margin-top: 20px;
+    background-color: var(--highlight, #007bff); /* Usa tu color de acento */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.toggle-solution-btn:hover {
+    background-color: var(--primary, #0056b3); /* Color más oscuro al pasar el ratón */
+}
+
+/* ---------------------------------- */
+/* Estilos del Acordeón (Ocultación/Mostrar) */
+/* ---------------------------------- */
+.case-solution {
+    max-height: 0; /* Oculta el contenido */
+    overflow: hidden; /* Corta el contenido oculto */
+    transition: max-height 0.4s ease-out; /* Animación de despliegue */
+    opacity: 0; /* Lo hacemos invisible al inicio */
+}
+
+.case-solution.active {
+    /* Al activar, establece un valor lo suficientemente grande para mostrar todo el contenido 
+       (debe ser mayor a la altura máxima real del contenido) */
+    max-height: 1000px; 
+    opacity: 1;
+    transition: max-height 0.6s ease-in, opacity 0.4s ease 0.2s; /* Ajusta la transición para que sea suave */
+}
+
 
 .case-grid {
 display: grid;

@@ -12,6 +12,50 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
+
+// Add scroll effect to navbar
+let lastScroll = 0;
+window.addEventListener('scroll', () => {
+    const nav = document.querySelector('nav');
+    const currentScroll = window.pageYOffset;
+    
+    if (currentScroll > 100) {
+        nav.style.background = 'rgba(26, 26, 46, 0.95)';
+        nav.style.backdropFilter = 'blur(10px)';
+    } else {
+        nav.style.background = 'var(--primary)';
+        nav.style.backdropFilter = 'none';
+    }
+    
+    lastScroll = currentScroll;
+});
+
+// Animate elements on scroll
+const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -100px 0px'
+};
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+                     // **AÑADIR ESTO:**
+            observer.unobserve(entry.target); // Dejar de observar una vez que el elemento es visible
+        }
+
+    });
+}, observerOptions);
+
+// Observe all cards and steps
+document.querySelectorAll('.step, .service-card, .case-card, .value-card').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(20px)';
+    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    observer.observe(el);
+});
+
 // Contact form handling (Modificado para PHP)
 const contactForm = document.getElementById('contactForm');
 const successMessage = document.getElementById('successMessage');
@@ -74,42 +118,28 @@ contactForm.addEventListener('submit', async function(e) {
 });
 
 
-// Add scroll effect to navbar
-let lastScroll = 0;
-window.addEventListener('scroll', () => {
-    const nav = document.querySelector('nav');
-    const currentScroll = window.pageYOffset;
-    
-    if (currentScroll > 100) {
-        nav.style.background = 'rgba(26, 26, 46, 0.95)';
-        nav.style.backdropFilter = 'blur(10px)';
-    } else {
-        nav.style.background = 'var(--primary)';
-        nav.style.backdropFilter = 'none';
-    }
-    
-    lastScroll = currentScroll;
-});
+document.addEventListener('DOMContentLoaded', function() {
+    const buttons = document.querySelectorAll('.toggle-solution-btn');
 
-// Animate elements on scroll
-const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -100px 0px'
-};
+    buttons.forEach(button => {
+        button.addEventListener('click', function() {
+            // 1. Obtener el ID del target (la solución a mostrar)
+            const targetId = this.getAttribute('data-target');
+            const targetSolution = document.getElementById(targetId);
 
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.style.opacity = '1';
-            entry.target.style.transform = 'translateY(0)';
-        }
+            if (targetSolution) {
+                // 2. Alternar la clase 'active' para desplegar/ocultar el contenido
+                targetSolution.classList.toggle('active');
+
+                // 3. Cambiar el texto del botón
+                if (targetSolution.classList.contains('active')) {
+                    this.textContent = 'Ocultar Solución';
+                    this.classList.add('active'); // Opcional: para darle un estilo diferente al botón
+                } else {
+                    this.textContent = 'Ver Solución Completa';
+                    this.classList.remove('active');
+                }
+            }
+        });
     });
-}, observerOptions);
-
-// Observe all cards and steps
-document.querySelectorAll('.step, .service-card, .case-card, .value-card').forEach(el => {
-    el.style.opacity = '0';
-    el.style.transform = 'translateY(20px)';
-    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-    observer.observe(el);
 });
