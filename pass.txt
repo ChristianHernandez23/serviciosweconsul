@@ -1,3 +1,34 @@
         user: 'systemscerberus@gmail.com', 
         // La "Contraseña de Aplicación" generada por Gmail o la contraseña de tu SMTP
         pass: 'vldm hpov fqou axqs' 
+
+
+            <!-- Values Section -->
+    <section class="values">
+        <div class="container">
+            <h2 class="section-title">Nuestro Valores</h2>
+            <p class="section-subtitle">La base de todo</p>
+            <div class="process-values">
+                <div class="value">
+                    <div class="value-icon"><i class="bi bi-bullseye"></i></div>
+                    <h3>Calidad del Código</h3>
+                    <p>Escribimos código mantenible y escalable que resiste la prueba del tiempo.</p>
+                </div>
+                <div class="value">
+                    <div class="value-icon"><i class="bi bi-shield-fill-check"></i></div>
+                    <h3>Vigilancia </h3>
+                    <p>La vigilancia es el fundamento de todo lo que construimos, acompañar y brindar apoyo en caso de emergencia.</p>
+                </div>
+                <div class="value">
+                    <div class="value-icon"><i class="bi bi-arrow-repeat"></i></div>
+                    <h3>Adaptabilidad</h3>
+                    <p>Cada cliente es único. Adaptamos nuestras soluciones a tus necesidades específicas.</p>
+                </div>
+                <div class="value">
+                    <div class="value-icon"><i class="bi bi-rocket-takeoff"></i></div>
+                    <h3>Innovación</h3>
+                    <p>Utilizamos las tecnologías más avanzadas para crear soluciones que marcan la diferencia.</p>
+                </div>
+            </div>
+        </div>
+    </section>

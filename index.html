@@ -17,7 +17,15 @@
                 <img src="assets/img/logo_sf.png" alt="Cerberus Systems Logo" style="height:80px; width:auto;">
                 <span>Cerberus Systems</span>
             </div>
-            <ul>
+            
+            <!-- BTN HAMBURGUESA: agregar dentro de <nav> .container -->
+            <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Abrir menú">
+                <span class="nav-toggle-bar"></span>
+                <span class="nav-toggle-bar"></span>
+                <span class="nav-toggle-bar"></span>
+            </button>
+            <!-- A tu <ul> actual añádele id="nav-menu" y clase nav-menu -->
+            <ul id="nav-menu" class="nav-menu">
                 <li><a href="#inicio">Inicio</a></li>
                 <li><a href="#servicios">Servicios</a></li>
                 <li><a href="#casos">Casos de Éxito</a></li>
@@ -31,7 +39,8 @@
     <section id="inicio" class="hero">
         <div class="container">
             <h1>Software Personalizado.</h1>
-            <p class="subtitle">Tu negocio es único. Tu software también debería serlo. Creamos <strong>sistemas personalizados</strong>, optimizados para tu flujo de trabajo, necesidades, y con <strong>seguridad integrada</strong> desde la primera línea de código.</p>
+            
+            <p class="subtitle"><strong>Tu software podría ser tán único como tu negocio.</strong><br> <br> Hacemos tu trabajo más sencillo desde la comodidad de unos clicks.</p>
             <a href="#contacto" class="cta-button">Comienza tu Proyecto Personalizado</a>
         </div>
     </section>
@@ -39,29 +48,29 @@
     <!-- Process Section -->
     <section class="process">
         <div class="container">
-            <h2 class="section-title">Nuestro Proceso</h2>
+            <h2 class="section-title">¿Cómo lo hacemos?</h2>
             <p class="section-subtitle">Un camino claro hacia tu solución personalizada</p>
             <div class="process-steps">
                 <div class="step">
                     <div class="step-number">01</div>
-                    <h3>Descubrimiento</h3>
-                    <p>Analizamos y entendemos tus necesidades específicas, flujos de trabajo y objetivos de negocio para diseñar la solución perfecta y personalizada.
+                    <h3>Acercamiento</h3>
+                    <p>Escuchamos y entendemos tus necesidades, analizamos cada punto de tu negocio para lograr el sistema más sencillo y perfecto para tu negocio.
                     </p>
                 </div>
                 <div class="step">
                     <div class="step-number">02</div>
                     <h3>Desarrollo</h3>
-                    <p>Construimos tu software utilizando las tecnologías mas adecuadas a para tu necesidad.</p>
+                    <p>Gracias al anális y a nuestras tecnologías, construimos el software más adecuado para tu negoocio.</p>
                 </div>
                 <div class="step">
                     <div class="step-number">03</div>
-                    <h3>Despliegue</h3>
-                    <p>Lanzamos tu sistema con pruebas exhaustivas previas y capacitación para su uso.</p>
+                    <h3>Entrega</h3>
+                    <p>Conocerás tu sistema previamente probado y listo para su uso.</p>
                 </div>
                 <div class="step">
                     <div class="step-number">04</div>
-                    <h3>Soporte</h3>
-                    <p>Te acompañamos con monitoreo constante para que tu solución pueda evolucionar con tu negocio</p>
+                    <h3>Acompañamiento</h3>
+                    <p>Tendrás un monitoreo constante garantizar el mejor funcionamiento.</p>
                 </div>
             </div>
         </div>
@@ -82,13 +91,6 @@
                 <p>Sistemas web robustos y escalables construidos con React, Vue.js, Angular y backends en Node.js, Python o .NET.</p>
             </div>
             
-            <div class="service-card">
-                <div class="service-icon">
-                    <i class="bi bi-phone"></i>
-                </div>
-                <h3>Aplicaciones Móviles</h3>
-                <p>Apps nativas e híbridas para iOS y Android que ofrecen experiencias excepcionales en cualquier dispositivo.</p>
-            </div>
             
             <div class="service-card">
                 <div class="service-icon">
@@ -110,7 +112,7 @@
                 <div class="service-icon">
                     <i class="bi bi-diagram-3"></i>
                 </div>
-                <h3>Soluciones Basadas en IA</h3>
+                <h3>Desarrollo de IA</h3>
                 <p>
                     Diseñamos e implementamos soluciones de Automatización Inteligente y Análisis Predictivo usando inteligencia
                     artificial para impulsar la toma de decisiones y optimizar procesos.
@@ -127,18 +129,10 @@
             
             <div class="service-card">
                 <div class="service-icon">
-                    <i class="bi bi-phone"></i>
-                </div>
-                <h3>Aplicaciones Móviles</h3>
-                <p>Apps nativas e híbridas para iOS y Android que ofrecen experiencias excepcionales en cualquier dispositivo.</p>
-            </div>
-            
-            <div class="service-card">
-                <div class="service-icon">
                     <i class="bi bi-gear"></i>
                 </div>
                 <h3>Sistemas Internos</h3>
-                <p>ERP, CRM y plataformas de gestión diseñadas específicamente para optimizar tus procesos empresariales.</p>
+                <p>ERP, CRM, CMS y plataformas de gestión diseñadas específicamente para optimizar tus procesos empresariales.</p>
             </div>
             
             <div class="service-card">
@@ -164,7 +158,8 @@
         </div>
     </section>
 
-    <!-- Methodology Section -->
+
+    <!-- Values Section -->
     <section class="methodology">
         <div class="container">
             <h2 class="section-title" style="color: var(--text);">Nuestros Valores</h2>
@@ -173,12 +168,13 @@
                 <div class="phase">
                     <div class="value-icon"><i class="bi bi-bullseye"></i></div>
                     <h3>Calidad del Código</h3>
-                    <p>Escribimos código mantenible y escalable que resiste la prueba del tiempo.</p>
+                    <p>Garantizamos la calidad y funcionalidad sin importar el tiempo y actualizaciones.</p>
                 </div>
                 <div class="phase">
                     <div class="value-icon"><i class="bi bi-shield-fill-check"></i></div>
                     <h3>Vigilancia </h3>
-                    <p>La vigilancia es el fundamento de todo lo que construimos, acompañar y brindar apoyo en caso de emergencia.</p>
+                    <p>Estamos dispuestos a brindar apoyo en caso de una emergencia.</p>
+
                 </div>
                 <div class="phase">
                     <div class="value-icon"><i class="bi bi-arrow-repeat"></i></div>
@@ -192,13 +188,8 @@
                 </div>
 
             </div>
-
-
-
-
         </div>
     </section>
-
     <!-- Cases Section -->
     <section id="casos" class="cases">
         <div class="container">
@@ -284,17 +275,16 @@
         <div class="container">
             <h2 class="section-title">Nuestro Equipo</h2>
             <div style="max-width: 800px; margin: 2rem auto; text-align: center;">
-                <p style="font-size: 1.1rem; line-height: 1.8;">Como <strong>Cérbero</strong>, el guardián de tres cabezas
-                    que vigilaba las puertas del inframundo, en <strong>Cerberus Systems</strong> protegemos la eficiencia y
-                    el futuro digital de nuestros clientes. Nuestro equipo de desarrolladores y arquitectos no solo
-                    programa, sino que <strong>construye con propósito y protege.</strong>.</p>
+                <p style="font-size: 1.1rem; line-height: 1.8;">
+                    En <strong>Cerberus Systems</strong> estamos comprometidos con el futuro digital por lo tanto, siempre protegeremos la eficiencia y comodidad de nuestros clientes.
+                    Nuestro equipo de desarrolladores y arquitectos no solo programa, construye con propósito y efectividad.</p>
             </div>
 
             <div class="team-container">
                 
                 <div class="team-member">
                     <img src="assets/img/richie.jpg " alt="Nombre del Miembro 1" class="member-photo">
-                    <h3 class="member-name">Ricardo Adorno Ávila</h3>
+                    <h3 class="member-name">Ricardo Adorno Avila</h3>
                     <p class="member-designation">Desarrollador</p>
                     <div class="social-links">
                         <a href="#" class="social-icon"><i class="fab fa-linkedin"></i></a>
@@ -305,7 +295,7 @@
                 
                 <div class="team-member">
                     <img src="URL_IMAGEN_MIEMBRO_2.jpg" alt="Nombre del Miembro 2" class="member-photo">
-                    <h3 class="member-name">Christian Alejandro Hernandez Lugo</h3>
+                    <h3 class="member-name">Christian Alejandro Hernández Lugo</h3>
                     <p class="member-designation">Desarrollador</p>
                     <div class="social-links">
                         <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
@@ -316,8 +306,8 @@
                 
                 <div class="team-member">
                     <img src="URL_IMAGEN_MIEMBRO_3.jpg" alt="Nombre del Miembro 3" class="member-photo">
-                    <h3 class="member-name">Nombre del Miembro 3</h3>
-                    <p class="member-designation">Mi Designación</p>
+                    <h3 class="member-name">Eduardo Salazar Márquez</h3>
+                    <p class="member-designation">Relaciones Públicas </p>
                     <div class="social-links">
                         <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
                         <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
@@ -339,11 +329,12 @@
             </div>
             <div style="margin-top: 3rem; text-align: center; background: var(--bg-light); padding: 2rem; border-radius: 10px;">
                 <h3 style="color: var(--accent); margin-bottom: 1rem;">Nuestras Tecnologías</h3>
-                <p><strong>Frontend:</strong> React, Vue.js, Angular, React Native</p>
-                <p><strong>Backend:</strong> Node.js, Python (Django/Flask), .NET Core, Java</p>
-                <p><strong>Cloud:</strong> AWS, Azure, Google Cloud Platform</p>
-                <p><strong>Databases:</strong> PostgreSQL, MongoDB, MySQL, Redis</p>
-                <p><strong>DevOps:</strong> Docker, Kubernetes, CI/CD, Terraform</p>
+                <p><strong>Web:</strong>Angular, React, WordPress, Node.js, .NET Core, JavaScript,PHP.</p>
+                <p><strong>Lenguajes de Programación:</strong> C,C#,C++,Python,JavaScript.</p>
+                <p><strong>Cloud:</strong> Google Cloud Platform.</p>
+                <p><strong>Databases:</strong> PostgreSQL, MongoDB, MySQL, SQLServer.</p>
+                <p><strong>Análisis de Datos:</strong>PowerBi, Tableu, Excel. </p>
+                <p><strong>DevOps:</strong> Docker, Kubernetes. </p>
             </div>
         </div>
     </section>

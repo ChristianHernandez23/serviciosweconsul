@@ -148,9 +148,6 @@ background: var(--bg-light);
 .container {
 max-width: 1200px;
 margin: 0 auto;
-
-
-
 }
 
 .section-title {
@@ -166,7 +163,7 @@ font-size: 1.2rem;
 color: #666;
 margin-bottom: 3rem;
 }
-/* Proceso */
+
 .process-steps {
 display: grid;
 grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -308,7 +305,7 @@ color: var(--text);
 
 .methodology-phases {
 display: grid;
-grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
 gap: 2rem;
 margin-top: 2rem;
 
@@ -321,6 +318,60 @@ border-radius: 10px;
 backdrop-filter: blur(10px);
 
 
+}
+/* Values */
+.process-values {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+gap: 2rem;
+margin-top: 3rem;
+}
+
+/* Estilos para el Contenedor Principal */
+.values-container {
+    display: flex; /* Activa Flexbox para poner las tarjetas en fila */
+    flex-wrap: wrap; /* Permite que las tarjetas salten de línea en pantallas pequeñas */
+    justify-content: center; /* Centra las tarjetas horizontalmente */
+    max-width: 1200px; /* Ancho máximo para el contenedor */
+    margin: 3rem auto; /* Margen superior/inferior y centrado */
+    padding: 0 15px;
+}
+
+
+.value {
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    /* Sombras inicial más sutil, pero con el color que deseas que 'brille' */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1); 
+    /* ¡Añade box-shadow y background-color a la transición! */
+    transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s;
+    text-align: center;
+}
+
+.value:hover {
+    /* Mantenemos el efecto de levantarse */
+    transform: translateY(-10px); /* Sugiero reducir un poco para que no sea tan brusco */
+
+    box-shadow: 
+        0 8px 25px rgba(0,0,0,0.2), /* Sombra principal más fuerte */
+        0 0 15px 5px rgba(0, 150, 255, 0.4); /* Sombra de color para el brillo azul/resaltado */
+        
+    /* Opcional: Cambiar ligeramente el fondo a un tono muy claro */
+    background-color: #f8faff; 
+}
+
+.value-icon {
+font-size: 3rem;
+font-weight: bold;
+color: var(--highlight);
+margin-bottom: 1rem;
+}
+
+.value h3 {
+font-size: 1.5rem;
+margin-bottom: 1rem;
+color: var(--primary);
 }
 
 .phase h3 {
@@ -675,3 +726,5 @@ display: block;
     display: block;
     opacity: 1;
 }
+
+
