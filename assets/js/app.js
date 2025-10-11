@@ -56,6 +56,90 @@ document.querySelectorAll('.step, .service-card, .case-card, .value-card').forEa
     observer.observe(el);
 });
 
+(function () {
+const BREAKPOINT = 992; // cámbialo aquí y en tu CSS
+const btn   = document.querySelector('.nav-toggle');
+const panel = document.getElementById('nav-menu');
+
+if (!btn || !panel) return;
+
+const close = () => {
+    btn.setAttribute('aria-expanded', 'false');
+    panel.classList.remove('is-open');
+};
+
+btn.addEventListener('click', () => {
+    const expanded = btn.getAttribute('aria-expanded') === 'true';
+    btn.setAttribute('aria-expanded', String(!expanded));
+    panel.classList.toggle('is-open', !expanded);
+});
+
+panel.addEventListener('click', (e) => {
+    if (e.target.closest('a')) close();
+});
+
+const mq = window.matchMedia(`(min-width: ${BREAKPOINT}px)`);
+const handleMQ = () => { if (mq.matches) close(); };
+mq.addEventListener ? mq.addEventListener('change', handleMQ) : mq.addListener(handleMQ);
+handleMQ();
+
+window.addEventListener('hashchange', close);
+})();
+document.addEventListener('DOMContentLoaded', function () {
+  const buttons = document.querySelectorAll('.toggle-solution-btn');
+
+  const openPanel = (panel) => {
+    // Medir altura real
+    panel.style.maxHeight = panel.scrollHeight + 'px';
+    panel.classList.add('open');
+  };
+
+  const closePanel = (panel) => {
+    // Asegurar valor numérico actual para animar hacia 0
+    panel.style.maxHeight = panel.scrollHeight + 'px';
+    // forzar reflow para que el cambio a 0 transicione
+    panel.offsetHeight; 
+    panel.style.maxHeight = '0px';
+    panel.classList.remove('open');
+  };
+
+  buttons.forEach(btn => {
+    btn.addEventListener('click', function () {
+      const targetId = this.getAttribute('data-target');
+      const panel = document.getElementById(targetId);
+      if (!panel) return;
+
+      const isOpen = panel.classList.contains('open');
+      if (isOpen) {
+        closePanel(panel);
+        this.textContent = 'Ver Solución Completa';
+        this.classList.remove('active');
+        this.setAttribute('aria-expanded', 'false');
+      } else {
+        openPanel(panel);
+        this.textContent = 'Ocultar Solución';
+        this.classList.add('active');
+        this.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
+
+  // Recalcular altura si cambia el layout (resize / cambio de columnas)
+  const recalcOpenHeights = () => {
+    document.querySelectorAll('.case-solution.open').forEach(panel => {
+      panel.style.maxHeight = 'auto';            // limpiar por si quedó un número viejo
+      panel.style.maxHeight = panel.scrollHeight + 'px';
+    });
+  };
+  window.addEventListener('resize', recalcOpenHeights);
+
+  // Si tu contenido dentro cambia dinámicamente, puedes observarlo:
+  const ro = new ResizeObserver(recalcOpenHeights);
+  document.querySelectorAll('.case-solution').forEach(p => ro.observe(p));
+});
+
+
+
 // Contact form handling (Modificado para PHP)
 const contactForm = document.getElementById('contactForm');
 const successMessage = document.getElementById('successMessage');
@@ -118,29 +202,4 @@ contactForm.addEventListener('submit', async function(e) {
 });
 
 
-document.addEventListener('DOMContentLoaded', function() {
-    const buttons = document.querySelectorAll('.toggle-solution-btn');
-
-    buttons.forEach(button => {
-        button.addEventListener('click', function() {
-            // 1. Obtener el ID del target (la solución a mostrar)
-            const targetId = this.getAttribute('data-target');
-            const targetSolution = document.getElementById(targetId);
-
-            if (targetSolution) {
-                // 2. Alternar la clase 'active' para desplegar/ocultar el contenido
-                targetSolution.classList.toggle('active');
-
-                // 3. Cambiar el texto del botón
-                if (targetSolution.classList.contains('active')) {
-                    this.textContent = 'Ocultar Solución';
-                    this.classList.add('active'); // Opcional: para darle un estilo diferente al botón
-                } else {
-                    this.textContent = 'Ver Solución Completa';
-                    this.classList.remove('active');
-                }
-            }
-        });
-    });
-});
 

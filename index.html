@@ -11,35 +11,39 @@
 </head>
 <body>
     <!-- Navigation -->
-    <nav>
-        <div class="container">
-            <div class="logo">
-                <img src="assets/img/logo_sf.png" alt="Cerberus Systems Logo" style="height:80px; width:auto;">
-                <span>Cerberus Systems</span>
-            </div>
-            
-            <!-- BTN HAMBURGUESA: agregar dentro de <nav> .container -->
-            <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Abrir menú">
-                <span class="nav-toggle-bar"></span>
-                <span class="nav-toggle-bar"></span>
-                <span class="nav-toggle-bar"></span>
-            </button>
-            <!-- A tu <ul> actual añádele id="nav-menu" y clase nav-menu -->
-            <ul id="nav-menu" class="nav-menu">
-                <li><a href="#inicio">Inicio</a></li>
-                <li><a href="#servicios">Servicios</a></li>
-                <li><a href="#casos">Casos de Éxito</a></li>
-                <li><a href="#equipo">Equipo</a></li>
-                <li><a href="#contacto">Contacto</a></li>
-            </ul>
+    <nav class="site-nav">
+    <div class="container">
+        <div class="logo">
+        <img src="assets/img/logo_sf.png" alt="Cerberus Systems Logo" style="height:80px; width:auto;">
+        <span>Cerberus Systems</span>
         </div>
+
+        <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Abrir menú">
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+        </button>
+
+        <!-- 👇 ahora el panel va dentro del container -->
+        <div class="nav-panel" id="nav-menu">
+        <ul class="nav-menu">
+            <li><a href="#inicio">Inicio</a></li>
+            <li><a href="#servicios">Servicios</a></li>
+            <li><a href="#casos">Casos de Éxito</a></li>
+            <li><a href="#equipo">Equipo</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+        </ul>
+        </div>
+    </div>
     </nav>
+
+
+
 
     <!-- Hero Section -->
     <section id="inicio" class="hero">
         <div class="container">
             <h1>Software Personalizado.</h1>
-            
             <p class="subtitle"><strong>Tu software podría ser tán único como tu negocio.</strong><br> <br> Hacemos tu trabajo más sencillo desde la comodidad de unos clicks.</p>
             <a href="#contacto" class="cta-button">Comienza tu Proyecto Personalizado</a>
         </div>
@@ -158,38 +162,39 @@
         </div>
     </section>
 
-
     <!-- Values Section -->
-    <section class="methodology">
+    <section class="values">
         <div class="container">
             <h2 class="section-title" style="color: var(--text);">Nuestros Valores</h2>
             <p class="section-subtitle" style="color: rgba(255,255,255,0.8);">La base de todo</p>
-            <div class="methodology-phases">
-                <div class="phase">
+            <div class="process-values">
+                <div class="value">
                     <div class="value-icon"><i class="bi bi-bullseye"></i></div>
                     <h3>Calidad del Código</h3>
                     <p>Garantizamos la calidad y funcionalidad sin importar el tiempo y actualizaciones.</p>
                 </div>
-                <div class="phase">
+                <div class="value">
                     <div class="value-icon"><i class="bi bi-shield-fill-check"></i></div>
                     <h3>Vigilancia </h3>
                     <p>Estamos dispuestos a brindar apoyo en caso de una emergencia.</p>
-
                 </div>
-                <div class="phase">
+                <div class="value">
                     <div class="value-icon"><i class="bi bi-arrow-repeat"></i></div>
                     <h3>Adaptabilidad</h3>
                     <p>Cada cliente es único. Adaptamos nuestras soluciones a tus necesidades específicas.</p>
                 </div>
-                    <div class="phase">
+                <div class="value">
                     <div class="value-icon"><i class="bi bi-rocket-takeoff"></i></div>
                     <h3>Innovación</h3>
                     <p>Utilizamos las tecnologías más avanzadas para crear soluciones que marcan la diferencia.</p>
                 </div>
-
             </div>
         </div>
     </section>
+
+
+
+
     <!-- Cases Section -->
     <section id="casos" class="cases">
         <div class="container">
