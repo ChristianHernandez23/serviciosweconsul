@@ -232,44 +232,117 @@
                         
                     </div>
                 </div>
-
                 <div class="case-card">
                     <div class="case-header">
-                        <h3>Plataforma Financiera FinTech</h3>
-                        <p>Industria: Servicios Financieros</p>
+                        <h3>Sistema de Gestión de Inventario y Operaciones para Vulcanizadora</h3>
+                        <p>Industria: Automotriz / Servicios</p>
                     </div>
                     <div class="case-body">
                         <h4>El Desafío</h4>
-                        <p>Necesitaban una plataforma segura para procesamiento de pagos con cumplimiento PCI-DSS y alta disponibilidad.</p>
-                        <h4 style="margin-top: 1rem;">La Solución</h4>
-                        <p>Sistema cloud en AWS con microservicios en Node.js, autenticación multifactor y encriptación end-to-end.</p>
-                        <h4 style="margin-top: 1rem;">Resultados</h4>
-                        <div>
-                            <span class="case-metric">99.99% Uptime</span>
-                            <span class="case-metric">↑ 50% Transacciones</span>
-                            <span class="case-metric">0 Brechas</span>
+                        <p>
+                            La vulcanizadora administraba su inventario y órdenes con hojas de cálculo y notas sueltas.
+                            Esto provocaba <strong>faltantes de stock</strong> en productos clave (parches, válvulas, llantas),
+                            <strong>errores en registros</strong> de clientes y servicios, y <strong>pérdida de tiempo</strong> al no
+                            tener un control
+                            centralizado de compras y ventas.
+                        </p>
+
+                        <div class="case-solution" id="solution-2">
+                            <h4 style="margin-top: 1rem;">La Solución</h4>
+                            <p>
+                                Se implementó una plataforma web de <strong>gestión integral</strong> (CRUD) desarrollada con
+                                <strong>Flask</strong> para el backend y <strong>MySQL</strong> como base de datos. El sistema unifica
+                                la operación diaria
+                                y ofrece información en tiempo real para una toma de decisiones ágil.
+                            </p>
+                            <ul>
+                                <li><strong>Inventario en tiempo real:</strong> altas, bajas y ajustes; control por categorías y
+                                    proveedores; niveles mínimos por producto.</li>
+                                <li><strong>Gestión de clientes:</strong> ficha completa de contacto, historial de compras y servicios.
+                                </li>
+                                <li><strong>Órdenes de compra y servicios:</strong> registro, seguimiento de estatus, costos y mano de
+                                    obra.</li>
+                                <li><strong>Alertas por WhatsApp:</strong> notificaciones automáticas por <em>bajo stock</em>, pedidos
+                                    recibidos o servicios listos para entrega.</li>
+                                <li><strong>Reportes gerenciales:</strong> ventas por periodo, rotación de inventario y productos más
+                                    vendidos.</li>
+                                <li><strong>Accesos y permisos:</strong> perfiles para administrador, ventas y taller con acciones
+                                    delimitadas.</li>
+                            </ul>
+
+                            <h4 style="margin-top: 1rem;">Resultados y Beneficios</h4>
+                            <div>
+                                <span class="case-metric">↓ Quiebres de stock</span><br>
+                                (Reabastecimiento oportuno gracias a alertas y mínimos configurables.)<br>
+                                <span class="case-metric">↑ Productividad del equipo</span><br>
+                                (Registro rápido de productos, clientes y servicios en un solo lugar.)<br>
+                                <span class="case-metric">↑ Visibilidad del negocio</span><br>
+                                (Reportes claros para planear compras y promociones.)<br>
+                                <span class="case-metric">↑ Experiencia del cliente</span><br>
+                                (Avisos por WhatsApp y entregas más puntuales.)
+                            </div>
                         </div>
+
+                        <button class="toggle-solution-btn" data-target="solution-2">Ver Solución</button>
                     </div>
                 </div>
 
+
                 <div class="case-card">
                     <div class="case-header">
-                        <h3>App Móvil E-commerce</h3>
-                        <p>Industria: Retail</p>
+                        <h3>Implementación de Machine Learning para Optimizar Ventas y Gestión de Inventario</h3>
+                        <p>Industria: Distribución / Retail</p>
                     </div>
                     <div class="case-body">
                         <h4>El Desafío</h4>
-                        <p>Experiencia móvil deficiente con alta tasa de abandono de carrito y problemas de sincronización de inventario.</p>
-                        <h4 style="margin-top: 1rem;">La Solución</h4>
-                        <p>App nativa en React Native con backend en .NET Core, integración con sistemas legacy y checkout optimizado.</p>
-                        <h4 style="margin-top: 1rem;">Resultados</h4>
-                        <div>
-                            <span class="case-metric">↑ 120% Ventas</span>
-                            <span class="case-metric">↓ 45% Abandono</span>
-                            <span class="case-metric">4.8★ Rating</span>
+                        <p>
+                            Una empresa mediana dedicada a la distribución de productos comerciales sufría constantes
+                            <strong>problemas de sobrestock y quiebres de inventario</strong> debido a una planificación basada en
+                            estimaciones manuales.
+                            Además, las campañas de venta se diseñaban sin datos reales sobre la demanda, lo que generaba
+                            <strong>pérdidas económicas y una baja rotación de productos</strong>.
+                        </p>
+                
+                        <div class="case-solution" id="solution-ml-retail">
+                            <h4 style="margin-top: 1rem;">La Solución</h4>
+                            <p>
+                                Se desarrolló un <strong>modelo de Machine Learning</strong> que analiza el historial de ventas,
+                                estacionalidad,
+                                comportamiento de clientes y tendencias externas para <strong>predecir la demanda futura</strong> y
+                                <strong>automatizar decisiones operativas clave</strong>.
+                                El sistema fue integrado al software interno de inventario, generando predicciones y recomendaciones
+                                en tiempo real para compras, promociones y distribución.
+                            </p>
+                            <ul>
+                                <li><strong>Predicción de demanda:</strong> el modelo anticipa la cantidad óptima de productos a pedir
+                                    por semana o mes, evitando excesos y faltantes.</li>
+                                <li><strong>Clasificación de productos:</strong> el sistema usa algoritmos de clustering para
+                                    identificar artículos de alta rotación, baja rentabilidad o estacionales.</li>
+                                <li><strong>Optimización de compras:</strong> recomendaciones automáticas basadas en probabilidad de
+                                    venta y nivel de stock actual.</li>
+                                <li><strong>Segmentación de clientes:</strong> análisis de comportamiento para dirigir promociones
+                                    personalizadas y aumentar la fidelidad.</li>
+                                <li><strong>Panel analítico:</strong> visualización de métricas clave, predicciones y tendencias de
+                                    mercado en tiempo real.</li>
+                            </ul>
+                
+                            <h4 style="margin-top: 1rem;">Resultados y Valor Generado</h4>
+                            <div>
+                                <span class="case-metric">↓ 25% Costos por Sobreinventario</span><br>
+                                (Menor gasto en almacenamiento y reducción de productos obsoletos.)<br>
+                                <span class="case-metric">↑ 30% Precisión en la Planificación</span><br>
+                                (Predicciones basadas en datos históricos y variables externas.)<br>
+                                <span class="case-metric">↑ 20% Ventas Totales</span><br>
+                                (Campañas personalizadas y reposición proactiva de productos.)<br>
+                                <span class="case-metric">↑ Toma de Decisiones Estratégicas</span><br>
+                                (Gestión basada en datos, no en intuición.)
+                            </div>
                         </div>
+                
+                        <button class="toggle-solution-btn" data-target="solution-ml-retail">Ver Solución</button>
                     </div>
                 </div>
+
             </div>
         </div>
     </section>
@@ -293,7 +366,7 @@
                     <p class="member-designation">Desarrollador</p>
                     <div class="social-links">
                         <a href="#" class="social-icon"><i class="fab fa-linkedin"></i></a>
-                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+
                         <a href="https://www.instagram.com/ricardoavila3119" class="social-icon"><i class="fab fa-instagram"></i></a>
                     </div>
                 </div>
@@ -303,9 +376,7 @@
                     <h3 class="member-name">Christian Alejandro Hernández Lugo</h3>
                     <p class="member-designation">Desarrollador</p>
                     <div class="social-links">
-                        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
-                        <a href="https://www.instagram.com/christian_1033" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-linkedin"></i></a>
                     </div>
                 </div>
                 
@@ -314,22 +385,11 @@
                     <h3 class="member-name">Eduardo Salazar Márquez</h3>
                     <p class="member-designation">Relaciones Públicas </p>
                     <div class="social-links">
-                        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-linkedin"></i></a>
                     </div>
                 </div>
                 
-                <div class="team-member">
-                    <img src="URL_IMAGEN_MIEMBRO_4.jpg" alt="Nombre del Miembro 4" class="member-photo">
-                    <h3 class="member-name">Nombre del Miembro 4</h3>
-                    <p class="member-designation">Mi Designación</p>
-                    <div class="social-links">
-                        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
+
 
             </div>
             <div style="margin-top: 3rem; text-align: center; background: var(--bg-light); padding: 2rem; border-radius: 10px;">
@@ -398,21 +458,16 @@
                     <li><a href="#contacto">Contacto</a></li>
                 </ul>
             </div>
-            <!--
-                        <div class="footer-section">
-                <h3>Legal</h3>
-                <ul class="footer-links">
-                    <li><a href="#sitemap">Sitemap</a></li>
-                </ul>
-            </div>
-            -->
-
+            
             <div class="footer-section">
                 <h3>Contacto</h3>
                 <p><i class="bi bi-envelope-at"></i><a href="mailto:systemscerberus@gmail.com"> systemscerberus@gmail.com</a></p>
                 <p><i class="bi bi-telephone-forward"></i> +52 (55) 26771907/<br> +52 (55) 3801680</p>
                 <p><i class="bi bi-pin-map"></i> Ciudad de México, México</p>
             </div>
+            
+
+
         </div>
         <div class="footer-bottom">
             <p>&copy; 2025 Cerberus Systems. Desarrollo a Medida con Seguridad Inquebrantable</p>
